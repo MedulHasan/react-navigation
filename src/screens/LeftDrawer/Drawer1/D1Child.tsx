@@ -2,20 +2,17 @@ import {View, Text, Button} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {Drawer1StackParamList} from '../../navigation/Screens';
+import {Drawer1StackParamList} from '../../../navigation/Screens';
 
-const Drawer1 = () => {
+const D1Child = () => {
   const navigation =
     useNavigation<StackNavigationProp<Drawer1StackParamList>>();
   return (
     <View>
-      <Text>Drawer1</Text>
-      <Button
-        title="D1Child"
-        onPress={() => navigation.navigate('Drawer1Child')}
-      />
+      <Text>D1Child</Text>
+      <Button title="Back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
 
-export default Drawer1;
+export default D1Child;
