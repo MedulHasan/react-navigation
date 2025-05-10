@@ -16,11 +16,6 @@ const DrawerTab: AppStackParamListKeys[] = [
 
 const LeftDrawerContent = (props: DrawerContentComponentProps) => {
   const {state} = props;
-  const routes = state.routes[0].state?.routes;
-  let nestedRoute = false;
-  if (routes?.length) {
-    nestedRoute = routes[routes.length - 1].state ? true : false;
-  }
 
   const navigation = useNavigation<DrawerNavigationProp<LeftDrawerParamList>>();
   return (
@@ -30,6 +25,11 @@ const LeftDrawerContent = (props: DrawerContentComponentProps) => {
           title={item}
           key={index}
           onPress={() => {
+            const routes = state.routes[0].state?.routes;
+            let nestedRoute = false;
+            if (routes?.length) {
+              nestedRoute = routes[routes.length - 1].state ? true : false;
+            }
             const isRouteExist = routes?.find(route => route.name === item);
             if (isRouteExist && routes?.length) {
               const popCount =
